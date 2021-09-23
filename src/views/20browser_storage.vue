@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name:"browser_storage",
+  name:"browser_storage432423",
 };
 </script>
 
