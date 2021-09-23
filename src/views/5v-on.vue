@@ -1,16 +1,17 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
 
 
         <h1>v-on 事件绑定</h1>
-        <ul>
+        <ol>
             <li>使用v-on：xxx或@xxx绑定事件，其中xxx是事件名</li>
             <li>事件的回调需要配置在methods对象中，最终会在vm上</li>
             <li>method中配置的函数 不需要箭头函数 否则this就不是vm了</li>
             <li>method中配置的函数 都是被vue所管理的函数，this的指向是vm或组件实例对象</li>
             <li>@click='demo'跟@click='demo($event)'效果一致，但后者可以传参</li>
-        </ul>
+        </ol>
         <hr>
         <div>{{number}}</div>
         <button v-on:click="add">加1</button>
@@ -123,7 +124,7 @@
             },
             addAttr() {
                 /*此方法无效*/
-                // this.obj.hobby='吃饭睡觉 打豆豆'
+                this.obj.hobby='吃饭睡觉 打豆豆'
                 this.obj = {
                     ...this.obj,
                     hobby: '吃饭睡觉打豆豆'
@@ -135,7 +136,7 @@
                 this.obj = {..._obj}
             },
             editAttr() {
-                this.obj.name = '创建'
+                this.obj.hobby = '吃饭睡觉打豆豆吃饭睡觉打豆豆'
             }
         },
         mounted() {
@@ -147,5 +148,11 @@
     }
 </script>
 <style>
-
+     ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
+    }
 </style>

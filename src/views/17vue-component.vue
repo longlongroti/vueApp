@@ -1,110 +1,86 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
-        <h1>生命周期</h1>
+        <top-nav-bar></top-nav-bar>
+
+        使用组件的三大步骤
         <ol>
-            <li>生命周期回调函数，也叫生命周期钩子函数</li>
-            <li>vue在关键时刻帮我们调用的一些特殊名称函数</li>
-            <li>生命周期函数的名字不能更改，但函数的具体内容是程序员根据需求编写的</li>
-            <li>生命周期函数中的this指向是vm或者组件实例对象</li>
+            <li>定义组件（创建组件）</li>
+            <li>注册组件</li>
+            <li>使用组件</li>
         </ol>
-        <h2 :style="{opacity: op}">欢迎学习vue</h2>
-        <button @click="stopIt">点我停止</button>
-        <div>
-            {{abeforeCreate}}
-        </div>
-        <div>
-            {{acreated}}
-        </div>
-        <div>
-            {{abeforeMount}}
-        </div>
-        <div>
-            {{amounted}}
-        </div>
-        <div  style="height:900px;width:900px;overflow:auto;background:#EEEEEE;">
-            {{abeforeUpdate}}
-        </div>
-        <div  style="height:900px;width:900px;overflow:auto;background:#EEEEEE;">
-            {{aupdated}}
-        </div>
-        <div>
-            {{abeforeDestroy}}
-        </div>
-        <div>
-            {{adestroyed}}
-        </div>
+
+
+        <ol>
+            <li>定义组件时，不要写el，最终所有容器都要经过一个vm的管理，由vm中的el决定服务哪个容器</li>
+            <li>data必须写成函数，避免组件复用时，数据存在引用关系</li>
+            <li>局部注册，靠new vue 的时候传入components选项</li>
+            <li>全局注册，靠vue.component('组件名'，组件)</li>
+        </ol>
+
+        <div>vc有的功能vm都有 vm的el功能 vc没有</div>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631768191.jpg"><br><br>
+
+        <h1>组件</h1>
+        组件就是实现应用中局部功能代码和资源的集合
+        <comp-school></comp-school>
+        <hr>
+        <comp-student></comp-student>
+
+        <hr>
+        <!--组件嵌套-->
+        <comp-school-student></comp-school-student>
+
+        <hr>
+        mixin constant: {{a}}--{{b}}--{{aa}}
     </div>
 </template>
 
 <script>
+    /*注册局部组件*/
+    import ComponentB from '@/components/comp-school-student.vue'
+    import ComponentA from '@/components/comp-student.vue'
 
+    console.log(ComponentA)
     export default {
         name: "test2",
         data() {
-            return {
-                op: 1,
-                abeforeCreate: [],
-                acreated: [],
-                abeforeMount: [],
-                amounted: [],
-                abeforeUpdate: [],
-                aupdated: [],
-                abeforeDestroy: [],
-                adestroyed: [],
-
-            }
+            return {}
         },
-        methods: {
-            stopIt(){
-                clearInterval(this.timeId)
-                // this.$destroy()
-            }
-
-        },
+        methods: {},
         computed: {},
         directives: {},
+        components:{
+            'comp-school-student':ComponentB,
+            'comp-student': ComponentA,
 
+        },
         beforeCreate() {
-            console.log('beforeCreate');
+            console.log('beforeCreate',this);
             // this.abeforeCreate.push('beforeCreate')
         },
         created() {
             console.log('created');
-            this.acreated.push('created')
         },
         beforeMount() {
             console.log('beforeMount');
-            this.abeforeMount.push('beforeMount')
         },
 
         /*vue完成模板解析并把初始真实的dom元素放入页面后（挂载完毕）调用mounted*/
         mounted() {
             console.log('mounted');
-            this.amounted.push('mounted');
-           this.timeId= setInterval(() => {
-                console.log(this.op);
-                this.op -= 0.1;
-                if (this.op <= 0) this.op = 1
-
-
-            }, 1000)
         },
         beforeUpdate() {
             console.log('beforeUpdate');
-            this.abeforeUpdate.push('beforeUpdate')
         },
         updated() {
             console.log('updated');
-            this.aupdated.push('updated')
         },
         beforeDestroy() {
             console.log('beforeDestroy');
-            this.abeforeDestroy.push('beforeDestroy')
         },
         destroyed() {
             console.log('destroyed');
-            this.adestroyed.push('destroyed')
         }
 
 
@@ -113,16 +89,17 @@
 
 </script>
 <style>
-    .img-responsive {
-        display: inline-block;
-        height: auto;
-        max-width: 100%;
-    }
+
+
     ol {
         text-align: left;
-        font-size:20px;
+        font-size: 20px;
         color: red;
         font-style: italic;
         border: 4px solid bisque;
+    }
+    .img-responsive{
+        width:100%;
+        height: 100%;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="demo">
         <h2>学生名称{{studentName}}</h2>
         <h2>学生年龄{{age}}</h2>
         <button @click="showName">点我</button>
@@ -21,3 +21,8 @@
         }
     }
 </script>
+<style scoped>
+    .demo{
+        background-color: red;
+    }
+</style>

@@ -1,10 +1,14 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>object define property</h1>
     </div>
 </template>
 <script>
+
+
     let person={name:'chen',age:1}
     Object.defineProperty(person,'address',{
         value:'tokyo'

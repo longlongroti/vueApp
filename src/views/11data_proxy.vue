@@ -1,12 +1,15 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>数据代理</h1>
-        <img alt="Vue logo" src="../assets/1631094244.jpg">
+        <img alt="Vue logo" src="../assets/img/1631094244.jpg" class="img-responsive">
 
     </div>
 </template>
 <script>
+
     let person={name:'chen'}
     let person2={}
     Object.defineProperty(person2,'name',{
@@ -23,4 +26,11 @@
 </script>
 <style>
 
+    ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
+    }
 </style>

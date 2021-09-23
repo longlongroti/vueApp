@@ -1,6 +1,8 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div>
+        <top-nav-bar></top-nav-bar>
+
         <h1>事件修饰符和键盘事件</h1>
 
         <ol>
@@ -172,7 +174,11 @@
         height: 100px;
     }
 
-    ol {
+     ol {
         text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

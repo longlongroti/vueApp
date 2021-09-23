@@ -2,9 +2,13 @@
 <html lang="">
   <head>
     <meta charset="utf-8">
+    <!--争对ie浏览器配置，让ie用最高的渲染器级别渲染页面-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--开启移动端的理想视口-->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--配置页签图标，base_url就是index.html所在的页面-->
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!--配置网页的标题 去package.json里面获取title -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>

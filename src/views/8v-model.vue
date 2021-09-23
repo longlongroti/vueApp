@@ -1,6 +1,8 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>双向绑定v-model</h1>
         <ol>
             <li>当data里的任何数据发生了改变 该模板会重新加载 所有data用到的地方重新赋值 methods里的方法会一直被调用
@@ -149,7 +151,11 @@
     }
 </script>
 <style>
-    ol {
+     ol {
         text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

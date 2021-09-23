@@ -1,7 +1,19 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>计算和侦听属性</h1>
+
+        <ol>
+            <li>computed使用场景，某个数据受多个数据影响、需要对其他数据进行js处理在显示</li>
+            <li>watch使用场景，一个数据的变化影响多个数据，一个数据变化需要使用异步操作</li>
+            <li>computed可以完成的 watch都能完成</li>
+            <li>watch可以完成异步操作</li>
+            <li>所有vue管理的函数 最好使用普通函数</li>
+            <li>所有不被vue管理的函数 settimeout ajax promise的回调函数，最好使用箭头函数，这样this的指向才是vm</li>
+        </ol>
+
         <!--表达式复杂的话会导致模板难以维护，
         而且如果多个地方使用该表达式的话则会导致重复-->
         <div>{{type +' :'+ msg}}</div>
@@ -35,9 +47,7 @@
     </div>
 
 
-    <!--computed使用场景，某个数据受多个数据影响、需要对其他数据进行js处理在显示
-        watch使用场景，一个数据的变化影响多个数据，一个数据变化需要使用异步操作
-    -->
+
     <div>现在的语言{{language}}</div>
     <button @click="swap($event,'chinese')">language chinese</button>
     <button @click="swap($event,'english')">language english</button>
@@ -136,7 +146,11 @@
     }
 </script>
 <style>
-    ol {
+     ol {
         text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

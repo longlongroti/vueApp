@@ -1,50 +1,59 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
-        <h1>过滤器</h1>
-        毫秒：{{date}}<br>
-        <!--计算类实现-->
-        计算类格式化：{{dateFmt}}<br>
-        <!--方法实现-->
-        方法格式化：{{getFmtTime()}}<br>
-        <!--过滤器实现 v3 不在支持-->
-        过滤器格式化：{{date | dateFilters}}
+        <top-nav-bar></top-nav-bar>
+
+        <h1>内置命令</h1>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631528117.jpg"><br><br>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631528173.jpg"><br><br>
+        <h1>{{text}}</h1>
+        <h1 v-text="text"></h1>
+        <div v-text="text2"></div>
+        <div v-html="text2"></div>
+        <hr>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580367.jpg"><br><br>
+        <div v-cloak>display none</div>
+        <hr>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580643.jpg"><br><br>
+        <div v-once>初始化的n值是：{{n}}</div>
+        <div>当前的n值是：{{n}}</div>
+        <button @click="n++">点我n++</button>
+        <hr>
+        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580880.jpg"><br><br>
+        <h2 v-pre>vue其实很简单</h2>
+        <div v-pre>当前的n值是：{{n}}</div>
+        <button @click="n++">点我n++</button>
     </div>
 </template>
 
 <script>
-    import dayjs from '@/assets/js/dayjs.js'
 
     export default {
         name: "test2",
         data() {
             return {
-                date: Date.now()
+                text: 'shgjiabzlqo',
+                text2: '<h3>加送多久哦啊</h3>',
+                n: 1
             }
         },
-        methods: {
-            getFmtTime() {
-                return dayjs(this.date).format('YYYY年MM月DD日 HH时mm分ss秒')
-            }
-        },
-        computed: {
-            dateFmt() {
-                return dayjs(this.date).format('YYYY年MM月DD日 HH时mm分ss秒')
-            }
-        },
-        filters: {
-            dateFilters(value) {
-                return dayjs(this.date).format('YYYY年MM月DD日 HH时mm分ss秒')
-            }
-        }
+        methods: {},
+        computed: {},
     }
 
 
 </script>
 <style>
-    .img-responsive {
-        display: inline-block;
-        height: auto;
-        max-width: 100%;
+
+
+    [v-cloak] {
+        display: none
+    }
+    ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

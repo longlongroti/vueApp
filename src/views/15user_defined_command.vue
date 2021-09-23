@@ -1,26 +1,23 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
-        <h1>内置命令</h1>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631528117.jpg"><br><br>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631528173.jpg"><br><br>
-        <h1>{{text}}</h1>
-        <h1 v-text="text"></h1>
-        <div v-text="text2"></div>
-        <div v-html="text2"></div>
-        <hr>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580367.jpg"><br><br>
-        <div v-cloak>display none</div>
-        <hr>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580643.jpg"><br><br>
-        <div v-once>初始化的n值是：{{n}}</div>
-        <div>当前的n值是：{{n}}</div>
+        <top-nav-bar></top-nav-bar>
+
+        <h1>自定义指令</h1>
+        <h2>当前的n值是<span v-text="n"></span></h2>
+        <h2>当前的大n值是<span v-big-number="n"></span></h2>
+
         <button @click="n++">点我n++</button>
+        <button @click="m++">点我m++{{m}}</button>
+
         <hr>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631580880.jpg"><br><br>
-        <h2 v-pre>vue其实很简单</h2>
-        <div v-pre>当前的n值是：{{n}}</div>
-        <button @click="n++">点我n++</button>
+
+        <input type="text" v-fbind:value="n">
+
+        <hr>
+        <input type="text" v-focus2>
+        <hr>
+        <input type="text" v-focus3>
     </div>
 </template>
 
@@ -30,25 +27,50 @@
         name: "test2",
         data() {
             return {
-                text: 'shgjiabzlqo',
-                text2: '<h3>加送多久哦啊</h3>',
-                n: 1
+                n: 1,
+                m: 1,
             }
         },
         methods: {},
         computed: {},
+        directives: {
+            /*
+            * 自定义函数何时被调用
+            * 1 指令与元素成功绑定时
+            * 2 指令所在的模板被重新解析时
+            * */
+            'big-number'(element, binding) {
+                console.log(element, binding,this);
+                element.innerHTML = binding.value * 10
+
+            }, fbind: {
+                created(element, binding) {
+                    element.style.backgroundColor='red'
+
+                    console.log('created',element, binding,this)
+                },
+                mounted(element, binding) {
+                    console.log('mounted',element, binding,this)
+                    element.value = binding.value
+
+                },
+                updated(element, binding) {
+                    console.log('updated',element, binding,this)
+                    element.value = binding.value
+                }
+            }
+        }
     }
 
 
 </script>
 <style>
-    .img-responsive {
-        display: inline-block;
-        height: auto;
-        max-width: 100%;
-    }
 
-    [v-cloak] {
-        display: none
+    ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

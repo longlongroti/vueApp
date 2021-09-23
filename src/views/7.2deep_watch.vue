@@ -1,6 +1,8 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>深度侦听</h1>
         <h2>今天天气很{{status}}</h2>
         <button @click="swap">切换天气</button>
@@ -66,7 +68,11 @@
     }
 </script>
 <style>
-    ol {
+     ol {
         text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

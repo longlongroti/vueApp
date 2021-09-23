@@ -1,9 +1,28 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>v-for 遍历数组</h1>
         <!--需要绑定唯一的key key的作用主要是为了高效的更新虚拟DOM-->
         <!--遍历数组-->
+        <ol>
+            <li>v-for用于列表数据展示</li>
+            <li>语法v-for='(value,index) in arr' :key='index'</li>
+            <li>语法v-for='(value,index) in str' :key='index'</li>
+            <li>语法v-for='(value,index) in 3' :key='index'</li>
+            <li>语法v-for='(value,key,index) in obj' :key='index'</li>
+            <li>可遍历数组，对象，字符串，指定次数</li>
+        </ol>
+        <ol>
+
+        </ol>
+
+        <img alt="Vue logo" src="../assets/img/1631238890.jpg" class="img-responsive">
+        <img alt="Vue logo" src="../assets/img/1631239459.jpg" class="img-responsive">
+        <img alt="Vue logo" src="../assets/img/1631239924.jpg" class="img-responsive">
+
+
         <hr>
         <div v-for="item in arr">{{item}}</div>
         <hr>
@@ -11,10 +30,18 @@
         <hr>
         <div v-for="(num,index) in arr">{{'索引值:'+index+' 实际值为:'+num}}</div>
         <hr>
+        遍历数组
         <div v-for="(num,index) in arr" :key="index">索引值{{index}} 实际值为{{num}}</div>
+        <hr>
+        遍历字符串
+        <div v-for="(item,index) in str" :key="index">索引值{{index}} 实际值为{{item}}</div>
+        <hr>
+        遍历指定次数
+        <div v-for="(item,index) in 4" :key="index">索引值{{index}} 实际值为{{item}}</div>
 
         <!--遍历对象-->
         <hr>
+        遍历对象
         <div v-for="(attrValue,attrName,index) in obj" :key="index">索引值：{{index}} 属性：{{attrName}} 属性值：{{attrValue}}
         </div>
         <hr>
@@ -31,6 +58,7 @@
         name: "test2",
         data() {
             return {
+                str: 'dasudhiausd',
                 arr: [1, 2, 3, 4, 5, 6, 7],
                 obj: {
                     name: '车弄',
@@ -68,5 +96,12 @@
     }
 </script>
 <style>
+     ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
+    }
 
 </style>

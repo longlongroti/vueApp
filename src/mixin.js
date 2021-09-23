@@ -1,31 +1,28 @@
-/*该文件是整个项目的入口文件*/
-/*引入vue*/
-import {createApp} from 'vue'
-/*引入App他是所有组件的父组件*/
-import App from './App.vue'
-import router from './router'
-import TopNavBar from '@/components/TopNavBar.vue'
-import CompSchool from '@/components/comp-school.vue'
-import NavBar from '@/components/NavBar.vue'
-
-/*创建vue实例对象*/
-const app = createApp(App);
-
-/*全局指令*/
-app.directive('focus2', {
-    created(el) {
-        el.style.backgroundColor = "bisque"
-    },
-    inserted(el) {
-        el.focus();
+export const myJs ={
+    methods:{
+        alertName(){
+            alert(this.name)
+        }
     }
-});
+}
 
-/*全局注册组件*/
-
-app.component("top-nav-bar", TopNavBar);
-app.component("comp-school", CompSchool);
-app.component("nav-bar", NavBar);
-
-app.use(router);
-app.mount('#app');
+export const myConstant={
+    data() {
+        return {
+            a:'1',
+            b:2
+        }
+    },
+}
+/*
+* 可以把多个组件公用的配置提取成一个混入对象
+* 第一步 定义混入
+* {
+*   data(){},
+*   method(){}
+* }
+*
+* 第二步 引入混入
+* 全局混入: app.mixin(xx)
+* 局部混入: mixins:['xx']
+* */

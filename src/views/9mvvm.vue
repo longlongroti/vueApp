@@ -1,6 +1,8 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>MVVM模型</h1>
 
         <h1>M model plain javascripy object data中的数据</h1>
@@ -8,8 +10,8 @@
         <h1>VM视图模型 vue实例对象 data biding dom Listener</h1>
         <h1>data中的所有属性最后都出现在了vm身上</h1>
         <h1>vm上的所有属性及vue原型上所有属性，在vue模板中都可以直接使用</h1>
-        <img alt="Vue logo" src="../assets/1631088979.jpg">
-        <img alt="Vue logo" src="../assets/1631089128.jpg">
+        <img alt="Vue logo" src="../assets/img/1631088979.jpg" class="img-responsive">
+        <img alt="Vue logo" src="../assets/img/1631089128.jpg" class="img-responsive">
 
         <hr>
         <h3>{{a}}</h3>

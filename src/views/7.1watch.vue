@@ -1,6 +1,8 @@
 <template>
     <!--template 下只能有一个子元素-->
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>侦听属性</h1>
 
         <ol>
@@ -53,7 +55,11 @@
     }
 </script>
 <style>
-    ol {
+     ol {
         text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
     }
 </style>

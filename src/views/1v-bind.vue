@@ -1,5 +1,7 @@
 <template>
     <div class="about">
+        <top-nav-bar></top-nav-bar>
+
         <h1>数据绑定v-bind</h1>
         <p>
             <!--通过花括号数据绑定-->
@@ -43,5 +45,11 @@
     }
 </script>
 <style>
-
+    ol {
+        text-align: left;
+        font-size:20px;
+        color: red;
+        font-style: italic;
+        border: 4px solid bisque;
+    }
 </style>

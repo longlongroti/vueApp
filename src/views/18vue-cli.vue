@@ -2,58 +2,53 @@
     <!--template 下只能有一个子元素-->
     <div class="about">
         <top-nav-bar></top-nav-bar>
-
-        使用组件的三大步骤
+        <h1>vue cli 脚手架</h1>
         <ol>
-            <li>定义组件（创建组件）</li>
-            <li>注册组件</li>
-            <li>使用组件</li>
+            <li>npm config set registry https://registry.npm.taobao.org</li>
+            <li>npm install -g @vue/cli</li>
+            <li>切换到创建脚手架项目的目录：vue create xxxx</li>
+            <li>cd xxxx</li>
+            <li>npm run serve</li>
+            <li>查看webpack的配置vue inspect >output.js</li>
         </ol>
 
-
+        <hr>
+        <h1 ref="refh1">ref='refh1'
         <ol>
-            <li>定义组件时，不要写el，最终所有容器都要经过一个vm的管理，由vm中的el决定服务哪个容器</li>
-            <li>data必须写成函数，避免组件复用时，数据存在引用关系</li>
-            <li>局部注册，靠new vue 的时候传入components选项</li>
-            <li>全局注册，靠vue.component('组件名'，组件)</li>
+            <li>ref 属性被用来给元素或子组件注册引用信息（id的代替者）</li>
+            <li>应用在html标签上获取的是真实dom元素，应用在组件标签上是组件实例对象（vm）</li>
+            <li>打标识：h1 ref='xxx'  comp-school ref='xxx'</li>
+            <li>获取： this.$refs.xxx</li>
         </ol>
-
-        <div>vc有的功能vm都有 vm的el功能 vc没有</div>
-        <img alt="Vue logo" class="img-responsive" src="../assets/img/1631768191.jpg"><br><br>
-
-        <h1>组件</h1>
-        组件就是实现应用中局部功能代码和资源的集合
-        <comp-school></comp-school>
-        <hr>
-        <comp-student></comp-student>
-
-        <hr>
-        <!--组件嵌套-->
-        <comp-school-student></comp-school-student>
+        </h1>
+        <comp-school ref="sch"></comp-school>
+        <button ref='btn' @click="showDOM">点我输出dom</button>
     </div>
 </template>
 
 <script>
-    /*注册局部组件*/
-    import ComponentA from '@/components/comp-student.vue'
-    import ComponentB from '@/components/comp-school-student.vue'
-
-    console.log(ComponentA)
+    import ComponentA from '@/components/comp-school'
     export default {
         name: "test2",
+        components:{
+           'comp-school': ComponentA
+        },
         data() {
             return {}
         },
-        methods: {},
+        methods: {
+            showDOM(){
+                console.log(this.$refs.refh1)
+                console.log(this.$refs.btn)
+                console.log(this.$refs.sch)
+
+            }
+        },
         computed: {},
         directives: {},
-        components:{
-            'comp-student': ComponentA,
-            'comp-school-student':ComponentB
-
-        },
+        components: {},
         beforeCreate() {
-            console.log('beforeCreate',this);
+            console.log('beforeCreate', this);
             // this.abeforeCreate.push('beforeCreate')
         },
         created() {
@@ -95,8 +90,9 @@
         font-style: italic;
         border: 4px solid bisque;
     }
-    .img-responsive{
-        width:100%;
+
+    .img-responsive {
+        width: 100%;
         height: 100%;
     }
 </style>
