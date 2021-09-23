@@ -34,11 +34,8 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: "10001", title: "eat", completed: false },
-        { id: "10002", title: "sleep", completed: false },
-        { id: "10003", title: "play", completed: true },
-      ],
+      todos: JSON.parse(window.localStorage.getItem("todos"))
+        ||[],
     };
   },
   methods: {
@@ -73,6 +70,15 @@ export default {
       this.todos = this.todos.filter((todo) => {
         return todo.completed === false;
       });
+    },
+  },
+  watch: {
+    todos: {
+      deep:true,
+      handler(newval) {
+        console.log(newval)
+        window.localStorage.setItem("todos", JSON.stringify(newval));
+      },
     },
   },
 };

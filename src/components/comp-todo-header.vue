@@ -32,7 +32,7 @@ export default {
 <style scoped>
 /*header*/
 .todo-header input {
-  width: 560px;
+  width: 90%;
   height: 28px;
   font-size: 14px;
   border: 1px solid #ccc;

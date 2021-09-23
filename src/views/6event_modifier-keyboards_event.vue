@@ -152,7 +152,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .box1 {
         padding: 5px;
         background-color: #42b983;

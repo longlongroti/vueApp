@@ -64,7 +64,7 @@
 
 
 </script>
-<style>
+<style scoped>
 
     ol {
         text-align: left;

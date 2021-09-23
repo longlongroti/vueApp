@@ -73,7 +73,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     ol {
         text-align: left;
         font-size:20px;
