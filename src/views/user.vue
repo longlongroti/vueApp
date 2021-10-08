@@ -23,23 +23,13 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 
 export default {
   name: "test",
   data() {
     return {};
   },
-  mounted() {
-    axios.get("http://localhost:8642/api/search/users?q=chenlong").then(
-      (response) => {
-        console.log("请求成功了", response.data);
-      },
-      (error) => {
-        console.log("请求失败了", error.message);
-      }
-    );
-  },
+ 
 };
 </script>
 <style scoped>
