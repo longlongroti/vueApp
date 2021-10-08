@@ -4,8 +4,6 @@
       v-for="todo in todos"
       :key="todo.id"
       :todo="todo"
-      :checkTodo="checkTodo"
-      :handleDelete="handleDelete"
     />
   </ul>
 </template>
@@ -18,7 +16,7 @@ export default {
   components: {
     "comp-todo-item": item,
   },
-  props: ["todos", "checkTodo","handleDelete"],
+  props: ["todos"],
 };
 </script>
 

@@ -5,16 +5,15 @@
       <div class="todo-wrap">
         <h2>todo list案例</h2>
         <comp-todo-header :addTodo="addTodo" />
-        <comp-todo-list
-          :todos="todos"
-          :checkTodo="checkTodo"
-          :handleDelete="handleDelete"
-        />
+        <comp-todo-list :todos="todos" />
+
+        <!-- 通过父组件给子组件传递函数类型的props方式实现 -->
+        <!-- 通过父组件给子组件绑定一个自定义事件实现 -->
         <comp-todo-footer
           :todos="todos"
           :checkAllTodo="checkAllTodo"
-          :uncheckAllTodo="uncheckAllTodo"
-          :removeCompleted="removeCompleted"
+          @r="removeCompleted"
+          @click="clicked"
         />
       </div>
     </div>
@@ -25,6 +24,8 @@
 import footer from "@/components/comp-todo-footer.vue";
 import header from "@/components/comp-todo-header.vue";
 import list from "@/components/comp-todo-list.vue";
+import pubsub from "pubsub-js";
+
 export default {
   name: "todo list",
   components: {
@@ -34,20 +35,17 @@ export default {
   },
   data() {
     return {
-      todos: JSON.parse(window.localStorage.getItem("todos"))
-        ||[],
+      todos: JSON.parse(window.localStorage.getItem("todos")) || [],
     };
   },
   methods: {
     addTodo(todo) {
       this.todos.unshift(todo);
     },
-    checkTodo(id) {
+    checkTodo(_, id) {
       this.todos.forEach((todo) => {
         if (todo.id === id) {
-          console.log(todo);
           todo.completed = !todo.completed;
-          console.log(todo);
         }
       });
     },
@@ -71,15 +69,31 @@ export default {
         return todo.completed === false;
       });
     },
+    clicked() {
+      console.log(123);
+    },
+    editTodos(_, obj) {
+      console.log(_,obj);
+      this.todos.forEach((todo) => {
+        if (todo.id === obj.id) {
+          todo.title = obj.title;
+        }
+      });
+    },
   },
   watch: {
     todos: {
-      deep:true,
+      deep: true,
       handler(newval) {
-        console.log(newval)
+        console.log(newval);
         window.localStorage.setItem("todos", JSON.stringify(newval));
       },
     },
+  },
+  mounted() {
+    this.$mybus.on("handleDelete", this.handleDelete);
+    pubsub.subscribe("checkTodo", this.checkTodo);
+    pubsub.subscribe("editTodos", this.editTodos);
   },
 };
 </script>
@@ -102,6 +116,11 @@ export default {
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #4977da;
+  border: 1px solid #49d0da;
 }
 .btn-danger:hover {
   color: #fff;

@@ -9,21 +9,24 @@
       >
     </span>
     <button class="btn btn-danger" @click="removeCompletedTodo">清除已完成任务</button>
+    <button class="btn btn-danger" @click="unbind">解绑清除完成任务按钮</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "todo-list-footer",
-  props: ["todos", "uncheckAllTodo", "checkAllTodo","removeCompleted"],
+  props: ["todos", "checkAllTodo"],
   methods: {
     checkAll(event) {
-      console.log(event.target.checked)
+      console.log('@@@@@@@@@',this)
       if (event.target.checked) this.checkAllTodo();
-      else this.uncheckAllTodo();
+      else this.$parent.uncheckAllTodo();
     },
     removeCompletedTodo(){
-      if(confirm('确认删除已完成？'))this.removeCompleted();
+      if(confirm('确认删除已完成？'))this.$emit('r');
+    },unbind(){
+      // this.$off('r')
     }
   },
   computed: {

@@ -21,6 +21,7 @@ export default {
         id: nanoid(),
         title: event.target.value,
         completed: false,
+        isEdit:false
       };
       this.addTodo(newTodo);
       event.target.value=''

@@ -30,6 +30,7 @@
         bottom: 3.5rem;
         left: 0;
         overflow: auto;
+        background-color: rgba(231, 222, 219, 0.192);
     }
 
 </style>

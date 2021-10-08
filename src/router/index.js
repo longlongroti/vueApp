@@ -139,7 +139,12 @@ const routes = [
         path: '/20browser-storage',
         name: 'TEST20',
         component: () => import( '../views/20browser_storage.vue')
-    }
+    },
+    {
+        path: '/21github',
+        name: 'TEST21',
+        component: () => import( '../views/21github.vue')
+    },
 ];  
 
 const router = createRouter({

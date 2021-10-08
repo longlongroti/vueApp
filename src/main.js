@@ -9,9 +9,14 @@ import CompSchool from '@/components/comp-school.vue'
 import NavBar from '@/components/NavBar.vue'
 import {myConstant} from './mixin'
 import plugin from "./plugin";
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import { Toast } from 'vant';
+import mitt from 'mitt'
+
 /*创建vue实例对象*/
 const app = createApp(App);
-
+app.config.globalProperties.$mybus = new mitt()
 /*全局指令*/
 app.directive('focus2', {
     created(el) {
@@ -27,5 +32,8 @@ app.component("top-nav-bar", TopNavBar);
 app.component("comp-school", CompSchool);
 app.component("nav-bar", NavBar);
 app.use(plugin);
+app.use(Vant)
+app.use(Toast);
+
 app.use(router);
 app.mount('#app');
